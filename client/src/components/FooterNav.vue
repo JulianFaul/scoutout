@@ -1,10 +1,17 @@
 <template>
+
   <div class="tab-bar tab-bar--top tab-bar--material">
+  <label class="tab-bar__item tab-bar--material__item">
+    <input type="radio" name="tab-bar-material-a" checked="checked">
+    <button class="tab-bar__button tab-bar--material__button">
+      <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-home"></i>
+    </button>
+  </label>
 
   <label class="tab-bar__item tab-bar--material__item">
     <input type="radio" name="tab-bar-material-a" checked="checked">
     <button class="tab-bar__button tab-bar--material__button">
-      <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-phone"></i>
+      <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-file"></i>
     </button>
   </label>
 
