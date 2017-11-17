@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <v-ons-tabbar>
+  <router-view slot="pages"></router-view>
+  <page-footer-nav></page-footer-nav>
 
-    <ons-page>
-      <header-top></header-top>
-      <router-view/>
-       <page-footer-nav></page-footer-nav>
-    </ons-page>
+  </v-ons-tabbar>
+
+
+        
   </div>
 </template>
 
@@ -14,7 +16,7 @@
 <script>
 import PageFooterNav from "@/components/FooterNav.vue";
 import HeaderTop from "@/components/HeaderTop.vue";
-
+    // <header-top></header-top>
 export default {
   name: "app",
   components: {

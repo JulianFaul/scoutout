@@ -1,15 +1,15 @@
 <template>
 
   <div class="tab-bar tab-bar--top tab-bar--material">
-  <label class="tab-bar__item tab-bar--material__item">
-    <input type="radio" name="tab-bar-material-a" checked="checked">
-    <button class="tab-bar__button tab-bar--material__button">
+  <label @click="navigateTo({name:'root'})" class="tab-bar__item tab-bar--material__item">
+    <input  type="radio" name="tab-bar-material-a" checked="checked">
+    <button  class="tab-bar__button tab-bar--material__button">
       <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-home"></i>
     </button>
   </label>
 
   <label class="tab-bar__item tab-bar--material__item">
-    <input type="radio" name="tab-bar-material-a" checked="checked">
+    <input type="radio" name="tab-bar-material-a">
     <button class="tab-bar__button tab-bar--material__button">
       <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-file"></i>
     </button>
@@ -22,9 +22,9 @@
     </button>
   </label>
 
-  <label class="tab-bar__item tab-bar--material__item">
+  <label @click="navigateTo({name:'register'})"  class="tab-bar__item tab-bar--material__item">
     <input type="radio" name="tab-bar-material-a">
-    <button class="tab-bar__button tab-bar--material__button">
+    <button  class="tab-bar__button tab-bar--material__button">
       <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-pin-account"></i>
     </button>
   </label>
@@ -33,7 +33,11 @@
 
 <script>
 export default {
-
+    methods:{
+        navigateTo (route) {
+            this.$router.push(route)
+        }
+    }
 }
 </script>
 
