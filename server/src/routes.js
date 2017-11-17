@@ -1,6 +1,6 @@
 const AuthenticationController       = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
-const AdvertisementController = require('./controllers/AdvertisementController')
+const AdvertisementController        = require('./controllers/AdvertisementController')
 
 module.exports = app => {
     app.post('/register',
