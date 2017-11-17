@@ -1,10 +1,15 @@
 <template>
   <div id="app">
-    <v-ons-tabbar>
-  <router-view slot="pages"></router-view>
-  <page-footer-nav></page-footer-nav>
+       <header-top></header-top>
 
-  </v-ons-tabbar>
+   
+        <router-view slot="pages"></router-view>
+    
+
+            
+    <page-footer-nav></page-footer-nav>
+
+ 
 
 
         
@@ -33,8 +38,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-  padding: 20px;
+
 }
 .button--material {
   position: relative;

@@ -2,7 +2,7 @@
 
 <div class="navigation-bar navigation-bar--material">
   <div class="navigation-bar__center navigation-bar--material__center">
-    Title
+    ScoutOut
   </div>
 </div>
 
