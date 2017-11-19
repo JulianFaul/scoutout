@@ -1,8 +1,16 @@
 <template>
 
-<div class="navigation-bar navigation-bar--material">
-  <div class="navigation-bar__center navigation-bar--material__center">
+<div class="navigation-bar">
+  <div class="navigation-bar__left">
+
+  </div>
+
+  <div class="navigation-bar__center">
     ScoutOut
+  </div>
+
+  <div v-if="this.$store.state.user" class="navigation-bar__right">
+    <span v-if="this.$store.state.user.isAdmin"  @click="navigateTo({name:'admin'})" class="toolbar-button--outline">Admin Dashboard</span>
   </div>
 </div>
 
@@ -10,8 +18,13 @@
 
 <script>
 export default {
-
+    methods:{
+        navigateTo (route) {
+            this.$router.push(route)
+        }
+    }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -47,8 +60,8 @@ export default {
   height: 44px;
   padding-left: 0;
   padding-right: 0;
-  background: #fff;
-  color: #1f1f21;
+     background: #009688;
+  color: #ffffff;
   -webkit-box-shadow: none;
   box-shadow: none;
   font-weight: 400;
@@ -91,7 +104,7 @@ export default {
   background: transparent;
   border: none;
   line-height: normal;
-  height: 20px;
+  height: 44px;
   vertical-align: top;
   overflow: visible;
   display: block;
@@ -113,7 +126,7 @@ export default {
 .navigation-bar__center {
   width: 46%;
   text-align: center;
-  line-height: 34px;
+  line-height: 44px;
   font-size: 17px;
   font-weight: 500;
   color: #ffffff;
@@ -130,29 +143,7 @@ export default {
 .navigation-bar__center:first-child:last-child {
   width: 100%;
 }
-.navigation-bar--material {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -moz-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  height: 30px;
-  border-bottom: 0;
-  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
-  box-shadow: 0 1px 5px rgba(0,0,0,0.3);
-  padding: 0;
-  background-color: #009688;
-  -webkit-background-size: 0;
-  background-size: 0;
-}
+
 .toolbar-button,
 .toolbar-button--outline,
 .toolbar-button--quiet {
@@ -210,8 +201,9 @@ export default {
   transition: none;
 }
 .toolbar-button--outline {
-  border: 1px solid rgba(38,100,171,0.81);
+  /* border: 1px solid rgba(38,100,171,0.81); */
   margin: auto 8px;
+  background:#ffffff;
   padding-left: 6px;
   padding-right: 6px;
 }

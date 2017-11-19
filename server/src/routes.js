@@ -2,6 +2,9 @@ const AuthenticationController       = require('./controllers/AuthenticationCont
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const AdvertisementController        = require('./controllers/AdvertisementController')
 
+
+
+
 module.exports = app => {
     app.post('/register',
     AuthenticationControllerPolicy.register,
@@ -9,10 +12,14 @@ module.exports = app => {
 
     app.post('/login',
     AuthenticationController.login)
-    
+
+    app.get('/users',
+    AuthenticationController.getAllUsers)
+
     app.get('/advertisements',
     AdvertisementController.getAllAdvertisements)
     
     app.post('/advertisements',
-    AdvertisementController.post)  
+    AdvertisementController.post)
 }
+

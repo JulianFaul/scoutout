@@ -20,7 +20,7 @@ module.exports = {
         res.send(advertisement)
       }catch(err){
         res.status(500).send({
-            error: "An error has occured trying to create the song"
+            error: "An error has occured trying to create the advertisement"
         })
       }
   }

@@ -8,8 +8,8 @@ module.exports = {
                 new RegExp('^[a-zA-Z0-9]{8,32}$')
             ),
             firstName : Joi.string(),
-            lastName : Joi.string()
-            
+            lastName : Joi.string(),
+            isAdmin : Joi.boolean()
         }
         
         const {error, value} = Joi.validate(req.body,schema)

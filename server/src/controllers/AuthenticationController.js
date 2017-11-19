@@ -53,5 +53,15 @@ module.exports = {
                 error: 'Invalid login information'
             })
         }       
+    },
+    async getAllUsers(req,res){
+        try{
+          const Users = await User.findAll()
+          res.send(Users)
+        }catch(err){
+          res.status(500).send({
+              error: "An error has occured trying to get all users"
+          })
+        }
     }
 }
