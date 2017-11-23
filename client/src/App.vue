@@ -1,19 +1,15 @@
-<template>
-  <div id="app">
-       <header-top></header-top>
+<template id="main-page">
+<v-ons-page>
 
-   
-        <router-view slot="pages"></router-view>
-    
+<header-top></header-top>
 
-            
-    <page-footer-nav></page-footer-nav>
-
- 
-
-
-        
+  <div class="content">
+    <router-view slot="pages"></router-view>
   </div>
+
+
+<page-footer-nav></page-footer-nav>
+</v-ons-page>
 </template>
 
 
@@ -21,7 +17,7 @@
 <script>
 import PageFooterNav from "@/components/FooterNav.vue";
 import HeaderTop from "@/components/HeaderTop.vue";
-    // <header-top></header-top>
+// <header-top></header-top>
 export default {
   name: "app",
   components: {
@@ -32,13 +28,28 @@ export default {
 </script>
 
 <style>
+  /* <div  id="app">
+    <header-top></header-top>
+    <ons-template>
+      <ons-page>
+        <router-view slot="pages"></router-view>
+      </ons-page>
+      <page-footer-nav></page-footer-nav>
+    </ons-template>
+  </div> */
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-
+}
+.toolbar+.page__background+.page__content {
+top: 44px;
+    padding-left: 10px;
+    padding-right: 10px;
+    bottom: 47px;
+    overflow-x: hidden;
 }
 .button--material {
   position: relative;
@@ -77,7 +88,7 @@ export default {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: rgba(24,103,194,0.81);
+  background-color: rgba(24, 103, 194, 0.81);
   border: 0px solid currentColor;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -85,8 +96,8 @@ export default {
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   min-height: 36px;
   line-height: 36px;
   padding: 0px 16px;
@@ -107,21 +118,25 @@ export default {
   -webkit-font-smoothing: antialiased;
   font-weight: 500;
 }
+
 .button--material:active {
-  -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.4);
-  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
   background-color: #009688;
   opacity: 1;
 }
+
 .button--material:focus {
   outline: 0;
 }
+
 .button--material:disabled,
 .button--material[disabled] {
   opacity: 0.5;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
 .text-input--material {
   padding: 0;
   margin: 0;
@@ -165,6 +180,7 @@ export default {
   height: 24px;
   -webkit-transform: translate3d(0, 0, 0);
 }
+
 .text-input--material__label {
   color: #afafaf;
   position: absolute;
@@ -175,6 +191,7 @@ export default {
   font-family: 'Roboto', 'Noto', sans-serif;
   pointer-events: none;
 }
+
 .text-input--material__label--active {
   color: #009688;
   -webkit-transform: translate(0, -75%) scale(0.75);
@@ -192,6 +209,7 @@ export default {
   -o-transition: -o-transform 0.1s ease-in, color 0.1s ease-in;
   transition: transform 0.1s ease-in, color 0.1s ease-in;
 }
+
 .text-input--material:focus {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#009688), to(#009688)), -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, #afafaf));
   background-image: -webkit-linear-gradient(#009688, #009688), -webkit-linear-gradient(bottom, transparent 1px, #afafaf 1px);
@@ -203,25 +221,31 @@ export default {
   -o-animation: material-text-input-animate 0.3s forwards;
   animation: material-text-input-animate 0.3s forwards;
 }
+
 .text-input--material::-webkit-input-placeholder {
   color: #afafaf;
   line-height: 20px;
 }
+
 .text-input--material::-moz-placeholder {
   color: #afafaf;
   line-height: 20px;
 }
+
 .text-input--material::-ms-input-placeholder {
   color: #afafaf;
   line-height: 20px;
 }
+
 .text-input--material:-ms-input-placeholder {
   color: #afafaf;
   line-height: 20px;
 }
+
 .text-input--material::-ms-clear {
   display: none;
 }
+
 @-moz-keyframes material-text-input-animate {
   0% {
     background-size: 0% 2px, 100% 2px;
@@ -230,6 +254,7 @@ export default {
     background-size: 100% 2px, 100% 2px;
   }
 }
+
 @-webkit-keyframes material-text-input-animate {
   0% {
     -webkit-background-size: 0% 2px, 100% 2px;
@@ -240,6 +265,7 @@ export default {
     background-size: 100% 2px, 100% 2px;
   }
 }
+
 @-o-keyframes material-text-input-animate {
   0% {
     background-size: 0% 2px, 100% 2px;
@@ -248,6 +274,7 @@ export default {
     background-size: 100% 2px, 100% 2px;
   }
 }
+
 @keyframes material-text-input-animate {
   0% {
     -webkit-background-size: 0% 2px, 100% 2px;
@@ -258,6 +285,7 @@ export default {
     background-size: 100% 2px, 100% 2px;
   }
 }
+
 .form-row {
   margin: 4px;
 }
@@ -294,5 +322,4 @@ input[type=password] {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 </style>

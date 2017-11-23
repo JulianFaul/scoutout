@@ -1,23 +1,55 @@
 <template>
-    <div>
+    <div class="content">
         <h3>Create a new Advertisement</h3>
         <v-ons-row>
             <v-ons-col>
                 <h4>Enter Details</h4>
-               
-                
                 <div class="form-row">
-                    <input type="text" v-model="imageURL" class="text-input--material width-full" placeholder="imageUrl" value="">
+                    <input type="text" v-model="advertisement.imageURL" class="text-input--material width-full" placeholder="imageUrl" value="">
                 </div>
 
                 <div class="form-row">
-                    <input type="text" v-model="companyName" class="text-input--material width-full" placeholder="Company Name" value="">
+                    <input type="text" v-model="advertisement.companyName" class="text-input--material width-full" placeholder="Company Name" value="">
                 </div>
 
                 <div class="form-row">
-                    <input type="text" v-model="companyDescription" class="text-input--material width-full" placeholder="Description" value="">
+                    <input type="text" v-model="advertisement.description" class="text-input--material width-full" placeholder="Description" value="">
                 </div>
 
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.telephoneNumber" class="text-input--material width-full" placeholder="telephoneNumber" value="">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.cellphoneNumber" class="text-input--material width-full" placeholder="cellphoneNumber" value="">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.facebookURL" class="text-input--material width-full" placeholder="facebookURL" value="">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.email" class="text-input--material width-full" placeholder="email" value="">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.logo" class="text-input--material width-full" placeholder="logo" value="">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.website" class="text-input--material width-full" placeholder="website" value="">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.address" class="text-input--material width-full" placeholder="address" value="">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" v-model="advertisement.category" class="text-input--material width-full" placeholder="category" value="">
+                </div>
+                <div class="vspc form-row">
+                    <ons-button @click="create" modifier="large--cta " class="button button--material">Create Advertisement</ons-button>
+                </div>
                 <!-- <div v-if="error">
                   <p class="error-message">{{error}}</p>
                 </div> -->
@@ -31,27 +63,18 @@
                 <h4>Advertisement Preview</h4>
                <div style="width: 370px; margin:0 auto;">
                 <v-ons-card>
-                    <img :src="imageURL"  style="width:150px;margin: 0 auto;display: block;">
+                    <img :src="advertisement.imageURL"  style="width:100% ;margin: 0 auto;display: block;">
                     <div class="title">
-                       <b><p>{{companyName}}</p></b>
-                       <small>{{companyDescription}}</small>
+                       <b>{{advertisement.companyName}}</b>
                     </div>
-                    <!-- <div class="content">
-                        <div>
-                            <v-ons-button>
-                                <v-ons-icon icon="ion-thumbsup"></v-ons-icon>
-                            </v-ons-button>
-                            <v-ons-button>
-                                <v-ons-icon icon="ion-share"></v-ons-icon>
-                            </v-ons-button>
-                        </div>
-                        <v-ons-list>
-                            <v-ons-list-header>Bindings</v-ons-list-header>
-                            <v-ons-list-item>Vue</v-ons-list-item>
-                            <v-ons-list-item>Angular</v-ons-list-item>
-                            <v-ons-list-item>React</v-ons-list-item>
-                        </v-ons-list>
-                    </div> -->
+                    <div class="description">
+                       {{advertisement.description}}
+                    </div>
+                    <div class="content">
+                        <span class="favIcon_unlike">
+                            <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-favorite"></i>
+                        </span>
+                    </div>
                 </v-ons-card>
                </div>
             </v-ons-col>
@@ -60,13 +83,61 @@
 </template>
 
 <script>
+import AdvertisementService from '@/services/AdvertisementService'
 export default {
     data() {
         return {
-           imageURL:"",
-           companyName:"",
-           companyDescription:""
+            advertisement:{
+                companyName    : null,
+                telephoneNumber: null,
+                cellphoneNumber: null,
+                facebookURL    : null,
+                description    : null,
+                email          : null,
+                logo           : null,
+                imageURL       : null,
+                website        : null,
+                address        : null,
+                category       : null
+            }
+            
+        }
+    },
+    methods:{
+        async create(){
+            try{
+                await AdvertisementService.createAdvertisement(this.advertisement)
+            }catch(err){
+                console.log(err)
+            }
+            
         }
     }
 }
 </script>
+
+<style scoped>
+.favIcon_unlike i{
+    /* color: #99d5cf; */
+    color: #ffffff;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 30px;
+}
+.favIcon_unlike i:hover{
+    color: #99d5cf;
+}
+.favIcon_liked i{
+    color: #009688;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 30px;
+}
+
+
+ons-card.card {
+    position: relative;
+}
+</style>

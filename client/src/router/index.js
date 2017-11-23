@@ -4,13 +4,16 @@ import Router from 'vue-router'
 import RegisterPage from '@/components/RegisterPage'
 import LoginPage from '@/components/LoginPage'
 import AdvertisementPage from '@/components/AdvertisementPage'
-import CreateAdvertisement from '@/components/CreateAdvertisement'
+import ViewAdvertisement from '@/components/ViewAdvertisement'
+
 import HomePage from '@/components/HelloWorld'
 
+import UserProfile from '@/components/UserProfile'
 
 import Dashboard from '@/components/admin/Dashboard'
 import EditAdvertisement from '@/components/admin/EditAdvertisement'
 import NewAdvertisement from '@/components/admin/NewAdvertisement'
+import ViewAll from '@/components/admin/ViewAll'
 
 Vue.use(Router)
 
@@ -19,7 +22,7 @@ export default new Router({
     {
       path: '/',
       name: 'root',
-      component: HomePage
+      component: AdvertisementPage
     },
     {
       path: '/register',
@@ -35,12 +38,17 @@ export default new Router({
       path: '/advertisements',
       name: 'advertisements',
       component: AdvertisementPage
-    }
-    ,
+    },
     {
-      path: '/advertisements/create',
-      name: 'create-ad',
-      component: CreateAdvertisement
+      path: '/advertisements/:advertisementId',
+      name: 'viewadvertisement',
+      component: ViewAdvertisement
+    },
+    {
+      path: '/userprofile',
+      name: 'userprofile',
+      component: UserProfile
+      
     },
     {
       path: '/admin',
@@ -57,7 +65,12 @@ export default new Router({
           component: NewAdvertisement
         },
         {
-          path: 'edit/:id',
+          path: 'view',
+          name: 'viewAll',
+          component: ViewAll
+        },
+        {
+          path: 'edit/:advertisementId',
           name: 'edit',
           component: EditAdvertisement
         }

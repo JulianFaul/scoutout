@@ -22,10 +22,17 @@
     </button>
   </label>
 
-  <label @click="navigateTo({name:'register'})"  class="tab-bar__item tab-bar--material__item">
+  <label v-if="$store.state.isUserLoggedIn" @click="navigateTo({name:'userprofile'})"  class="tab-bar__item tab-bar--material__item">
     <input type="radio" name="tab-bar-material-a">
     <button  class="tab-bar__button tab-bar--material__button">
       <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-pin-account"></i>
+    </button>
+  </label>
+  
+  <label v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name:'register'})"  class="tab-bar__item tab-bar--material__item">
+    <input type="radio" name="tab-bar-material-a">
+    <button  class="tab-bar__button tab-bar--material__button">
+      <i class="tab-bar__icon tab-bar--material__icon zmdi zmdi-sign-in"></i>
     </button>
   </label>
 </div>

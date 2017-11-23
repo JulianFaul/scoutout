@@ -60,7 +60,9 @@ export default {
         })
          this.$store.dispatch('setToken', response.data.token)
          this.$store.dispatch('setUser', response.data.user)
-        
+        this.$router.push({
+              name:"root"
+          })
      
 
     } catch (error){
@@ -78,5 +80,8 @@ export default {
 <style scoped>
 .error-message{
   color:red;
+}
+.formarea{
+  width: 100%;
 }
 </style>

@@ -1,9 +1,7 @@
 const AuthenticationController       = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const AdvertisementController        = require('./controllers/AdvertisementController')
-
-
-
+const AdvertisementLikeController        = require('./controllers/AdvertisementLikeController')
 
 module.exports = app => {
     app.post('/register',
@@ -21,5 +19,20 @@ module.exports = app => {
     
     app.post('/advertisements',
     AdvertisementController.post)
+
+    app.get('/advertisements/:advertisementId',
+    AdvertisementController.show)
+
+    app.put('/advertisements/:advertisementId',
+    AdvertisementController.put)
+
+    app.get('/advertisementlikes',
+    AdvertisementLikeController.getAllAdvertisementLikes)
+
+    app.post('/advertisementlikes',
+    AdvertisementLikeController.post)
+
+    app.delete('/advertisementlikes/:advertisementLikeId',
+    AdvertisementLikeController.delete)
 }
 

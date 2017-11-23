@@ -2,7 +2,7 @@
 
 <div>
 <div class="tab-bar tab-bar--top tab-bar--material">
-  <label @click="navigateTo({name:'admin'})" class="tab-bar__item tab-bar--material__item">
+  <label @click="navigateTo({name:'viewAll'})" class="tab-bar__item tab-bar--material__item">
     <input type="radio" name="tab-bar-material-a" checked="checked">
     <button class="tab-bar__button tab-bar--material__button">
     View Advertisements
@@ -16,7 +16,12 @@
     </button>
   </label>
 </div>
+<div>
+
+
+</div>
  <router-view></router-view>
+
 </div>
 
 </template>
@@ -30,6 +35,11 @@ export default {
 }
 </script>
 <style scoped>
+.tab-bar.tab-bar--top.tab-bar--material {
+     padding-left: 10px;
+    padding-right: 10px;
+    margin-left: -10px;
+}
 .tab-bar {
   font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
   -webkit-font-smoothing: antialiased;

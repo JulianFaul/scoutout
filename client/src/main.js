@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
+
 // JS import
 import VueOnsen from 'vue-onsenui'
 

@@ -1,7 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
     const Advertisement = sequelize.define('Advertisement', {
         companyName    :  DataTypes.STRING,
-        contactDetails :  DataTypes.STRING,
+        telephoneNumber:  DataTypes.STRING,
+        cellphoneNumber:  DataTypes.STRING,
+        facebookURL    :  DataTypes.TEXT,
+        description    :  DataTypes.STRING,
         email          :  DataTypes.STRING,
         logo           :  DataTypes.TEXT,
         imageURL       :  DataTypes.TEXT,
