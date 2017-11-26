@@ -15,6 +15,12 @@
       New Advertisement
     </button>
   </label>
+  <label @click="navigateTo({name:'allusers'})" class="tab-bar__item tab-bar--material__item">
+    <input type="radio" name="tab-bar-material-a">
+    <button class="tab-bar__button tab-bar--material__button">
+      View Users
+    </button>
+  </label>
 </div>
 <div>
 

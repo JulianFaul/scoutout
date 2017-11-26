@@ -1,109 +1,26 @@
 <template>
-    <div>
-        <input type="search" value="" placeholder="Search" class="search-input" v-model="search">
-        <div style="margin-top:40px;">
-        <h1>Your Likes</h1>
-        <v-ons-row>
-            <div @click="navigateTo({name:'viewadvertisement',params:{advertisementId:likedAdvertisement.AdvertisementId}})" style="width: 335px;" v-for="likedAdvertisement in likedAdvertisements" :key="likedAdvertisement.id">
-                <v-ons-card class="ad" style="height:300px;">
-                    <img :src="likedAdvertisement.imageURL" style="width:100% ;margin: 0 auto;display: block;">
-                    <div class="title">
-                        <b>{{likedAdvertisement.companyName}}</b>
-                    </div>
-                    <div class="description">
-                        {{likedAdvertisement.description}}
-                    </div>
-                    <div class="content">
 
-                    </div>
-                </v-ons-card>
-            </div>
-        </v-ons-row>
-        <h1>More Ads</h1>
-        
-        <v-ons-col>
-            <div @click="navigateTo({name:'viewadvertisement',params:{advertisementId:advertisement.id}})" style="width: 335px;float:left;" v-for="advertisement in advertisements" :key="advertisement.id">
-                <v-ons-card class="ad" style="height:300px;">
-                    <img :src="advertisement.imageURL" style="width:100% ;margin: 0 auto;display: block;">
-                    <div class="title">
-                        <b>{{advertisement.companyName}}</b>
-                    </div>
-                    <div class="description">
-                        {{advertisement.description}}
-                    </div>
-                    <div class="content">
-                      
-                    </div>
-                </v-ons-card>
-            </div>
-        </v-ons-col>
-        </div>
-    </div>
 </template>
 
 <script>
-import AdvertisementService from '@/services/AdvertisementService'
-import AdvertisementLikeService from '@/services/AdvertisementLikeService'
-import _ from 'lodash'
-import { mapState } from 'vuex'
+
 
 export default {
     name: 'advertisements',
     data() {
         return {
-            advertisements: null,
-            isLiked: false,
-            likedAdvertisements: null,
-            search:""
+          
         }
-    },
-    computed: {
-        ...mapState([
-            'isUserLoggedIn',
-            'user'
-        ])
-    },
+    }
     methods: {
         navigateTo(route) {
             this.$router.push(route)
         }
 
-    },
-    watch:{
-        search: _.debounce(async function(value){
-            const route = {
-                name: 'root'
-            }
-            if(this.search !== ''){
-                route.query ={
-                    search: this.search
-                }
-            }
-            this.$router.push(route)
-        },700),
-        '$route.query.search': {
-            immediate:true,
-            async handler(value){
-                this.search = value,
-                this.advertisements = (await AdvertisementService.getAllAdvertisements(value)).data
-            }
-        }
-    },
-    async mounted() {
-        if (this.isUserLoggedIn) {
-            try {
-                this.likedAdvertisements = (await AdvertisementLikeService.getAllAdvertisementLikes({
-                    userId: this.user.id
-                })).data
-            } catch (err) {
-                console.log(err)
-            }
-        }
     }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 ons-card.card {
     position: relative;

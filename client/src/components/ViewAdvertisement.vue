@@ -1,13 +1,10 @@
 <template>
-    <div>
-        <div>
-            <img :src="advertisement.imageURL" style="width:100%;"/>
-        </div>
-
-    
-            <div class="card viewCompanyCard">
+    <div style="margin-top:20px;">
+        <div class="card viewCompanyCard">
+            <img :src="advertisement.imageURL" style="width:150px;"/>
                 <h2 class="card__title">{{advertisement.companyName}}</h2>
                 <div class="card__content">{{advertisement.description}}</div>
+                <div><a v-bind:href="url" target="_blank">{{advertisement.website}}</a></div>
                 <span v-if="isUserLoggedIn && adlike" class="favIcon_liked">
                     <i @click="unlike" class="tab-bar__icon tab-bar--material__icon zmdi zmdi-favorite"></i>
                 </span>
@@ -32,6 +29,7 @@ export default {
     data() {
         return {
             advertisement: null,
+            url:null,
             adlike: null
         }
     },
@@ -85,26 +83,19 @@ export default {
     async mounted() {
             const advertisementId = this.$store.state.route.params.advertisementId
         this.advertisement = (await AdvertisementService.show(advertisementId)).data
+        this.url =  this.advertisement.website
     }
 }
 </script>
 
 <style scoped>
 .viewCompanyCard {
-    border-radius: 0px !important;
+
     position: relative;
-    top: -65px;
-    padding-top: 1px;
+
 }
 
-.companyDetails{
-    position: relative;
-    background-color: white;
-    top: -52px;
-    padding: 16px;
-    margin-left: -15px;
-    margin-right: -15px;
-}
+
 .favIcon_unlike i{
     color: #99d5cf;
     position: absolute;

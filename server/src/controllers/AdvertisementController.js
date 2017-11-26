@@ -3,9 +3,24 @@ const {Advertisement} = require('../models')
 module.exports = {
   async getAllAdvertisements(req,res){
     try{
-      const advertisements = await Advertisement.findAll({
-       limit : 10
-      })
+      let advertisements = null
+      const search = req.query.search
+      if(search){
+        advertisements = await Advertisement.findAll({
+          where:{
+            $or:[
+              'companyName','category','description'
+            ].map(key => ({
+              [key]: {
+                $like: `%${search}%`
+              }
+            }))
+          }
+        })
+      }else{
+        advertisements = await Advertisement.findAll()
+      }
+      
       res.send(advertisements)
     }catch(err){
       res.status(500).send({

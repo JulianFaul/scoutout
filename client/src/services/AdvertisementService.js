@@ -1,8 +1,12 @@
 import Api from '@/services/Api'
 
 export default {
-    getAllAdvertisements(){
-        return Api().get('advertisements')
+    getAllAdvertisements(search){
+        return Api().get('advertisements',{
+            params:{
+                search:search
+            }
+        })
     },
     createAdvertisement(advertisement){
         return Api().post('advertisements',advertisement)

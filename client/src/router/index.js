@@ -14,13 +14,14 @@ import Dashboard from '@/components/admin/Dashboard'
 import EditAdvertisement from '@/components/admin/EditAdvertisement'
 import NewAdvertisement from '@/components/admin/NewAdvertisement'
 import ViewAll from '@/components/admin/ViewAll'
+import AllUsers from '@/components/admin/AllUsers'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/advertisements',
       name: 'root',
       component: AdvertisementPage
     },
@@ -73,6 +74,11 @@ export default new Router({
           path: 'edit/:advertisementId',
           name: 'edit',
           component: EditAdvertisement
+        },
+        {
+         path: 'allUsers',
+         name: 'allusers',
+         component: AllUsers
         }
       ]
     }
