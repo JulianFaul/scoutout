@@ -2,6 +2,7 @@ const AuthenticationController       = require('./controllers/AuthenticationCont
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const AdvertisementController        = require('./controllers/AdvertisementController')
 const AdvertisementLikeController        = require('./controllers/AdvertisementLikeController')
+const ProductController        = require('./controllers/ProductController')
 
 module.exports = app => {
     app.post('/register',
@@ -34,5 +35,11 @@ module.exports = app => {
 
     app.delete('/advertisementlikes/:advertisementLikeId',
     AdvertisementLikeController.delete)
+
+    app.post('/product',
+    ProductController.post)
+
+    app.get('/product',
+    ProductController.getAllProducts)
 }
 

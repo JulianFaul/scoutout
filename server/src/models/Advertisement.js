@@ -12,5 +12,12 @@ module.exports = (sequelize, DataTypes) => {
         address        :  DataTypes.STRING,
         category       :  DataTypes.STRING
     })
+
+    Advertisement.associate = function(models){
+        Advertisement.hasMany(models.Product,{
+            foreignKey: "advertisement_id"
+        })
+    }
+
     return Advertisement
 }    
