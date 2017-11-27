@@ -24,6 +24,9 @@ module.exports = app => {
     app.get('/advertisements/:advertisementId',
     AdvertisementController.show)
 
+    app.delete('/advertisements/:advertisementId',
+    AdvertisementController.delete)
+
     app.put('/advertisements/:advertisementId',
     AdvertisementController.put)
 

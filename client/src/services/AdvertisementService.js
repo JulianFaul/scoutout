@@ -16,5 +16,8 @@ export default {
     },
     put(advertisement){
         return Api().put(`advertisements/${advertisement.id}`,advertisement)
+    },
+    delete(advertisementId) {
+        return Api().delete(`advertisements/${advertisementId}`)
     }
 }

@@ -62,5 +62,17 @@ module.exports = {
           error: "An error has occured trying to update the advertisement"
       })
     }
-}
+},
+  async delete(req,res){
+        try {
+            const { advertisementId } = req.params
+            const advertisement = await Advertisement.findById(advertisementId)
+            await advertisement.destroy()
+            res.send(advertisement)
+        } catch (err) {
+            res.status(500).send({
+                error: "An error has occured trying to delete advertisement"
+            })
+        }
+    }
 }

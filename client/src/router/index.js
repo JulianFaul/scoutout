@@ -15,6 +15,8 @@ import EditAdvertisement from '@/components/admin/EditAdvertisement'
 import NewAdvertisement from '@/components/admin/NewAdvertisement'
 import ViewAll from '@/components/admin/ViewAll'
 import AllUsers from '@/components/admin/AllUsers'
+import ViewProducts from '@/components/admin/ViewProducts'
+import AddProduct from '@/components/admin/AddProduct'
 
 Vue.use(Router)
 
@@ -79,7 +81,18 @@ export default new Router({
          path: 'allUsers',
          name: 'allusers',
          component: AllUsers
+        },
+        {
+          path:'products/:advertisementId',
+          name: 'viewProducts',
+          component: ViewProducts
+        },
+        {
+          path:'newproduct/:advertisementId',
+          name: 'newProducts',
+          component: AddProduct
         }
+        
       ]
     }
   ]
