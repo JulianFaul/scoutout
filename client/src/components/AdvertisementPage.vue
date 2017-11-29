@@ -32,7 +32,9 @@
                         {{advertisement.description}}
                     </div>
                     <div class="content">
-                      
+                      <template v-for="company in companies">
+                        {{company}}
+                    </template>
                     </div>
                 </v-ons-card>
             </div>
@@ -49,6 +51,11 @@ import { mapState } from 'vuex'
 
 export default {
     name: 'advertisements',
+    created () {
+      if (this.companies.length === 0) {
+        this.$store.dispatch('allCompanies')
+      }
+    },
     data() {
         return {
             advertisements: null,
@@ -61,7 +68,10 @@ export default {
         ...mapState([
             'isUserLoggedIn',
             'user'
-        ])
+        ]),
+         companies () {
+        return this.$store.getters.allCompanies
+      }
     },
     methods: {
         navigateTo(route) {

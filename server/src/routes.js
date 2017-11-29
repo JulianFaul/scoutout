@@ -15,7 +15,7 @@ module.exports = app => {
     app.get('/users',
     AuthenticationController.getAllUsers)
 
-    app.get('/advertisements',
+    app.get('/companies',
     AdvertisementController.getAllAdvertisements)
     
     app.post('/advertisements',

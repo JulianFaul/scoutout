@@ -6,6 +6,12 @@ import LoginPage from '@/components/LoginPage'
 import AdvertisementPage from '@/components/AdvertisementPage'
 import ViewAdvertisement from '@/components/ViewAdvertisement'
 
+
+
+import CompanyList from '@/components/company/CompanyList'
+import CompanyDetails from '@/components/company/CompanyDetails'
+
+
 import HomePage from '@/components/HelloWorld'
 
 import UserProfile from '@/components/UserProfile'
@@ -22,6 +28,25 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/companylist',
+      name: 'companylist',
+      component: CompanyList
+    },
+    {
+      path: '/details/:id',
+      name: 'details',
+      component: CompanyDetails
+    },
+
+
+
+
+
+
+
+
+
     {
       path: '/advertisements',
       name: 'root',
@@ -42,6 +67,7 @@ export default new Router({
       name: 'advertisements',
       component: AdvertisementPage
     },
+
     {
       path: '/advertisements/:advertisementId',
       name: 'viewadvertisement',

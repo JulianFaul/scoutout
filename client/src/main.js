@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { sync } from 'vuex-router-sync'
-import store from '@/store/store'
+import store from '@/store/index'
 
 // JS import
 import VueOnsen from 'vue-onsenui'

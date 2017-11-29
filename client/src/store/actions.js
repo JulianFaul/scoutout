@@ -1,0 +1,51 @@
+import axios from 'axios'
+import {API_BASE} from '../config'
+
+import {
+  ADD_COMPANY,
+  ADD_COMPANY_SUCCESS,
+  COMPANY_BY_ID,
+  COMPANY_BY_ID_SUCCESS,
+  UPDATE_COMPANY,
+  UPDATE_COMPANY_SUCCESS,
+  REMOVE_COMPANY,
+  REMOVE_COMPANY_SUCCESS,
+  ALL_COMPANYS,
+  ALL_COMPANYS_SUCCESS
+} from './mutation-types'
+
+
+export const companyActions = {
+  allCompanies ({commit}) {
+    commit(ALL_COMPANYS)
+    axios.get(`${API_BASE}/companies`).then(response => {
+      commit(ALL_COMPANYS_SUCCESS, response.data)
+    })
+  },
+  productById ({commit}, payload) {
+    commit(COMPANY_BY_ID)
+    axios.get(`${API_BASE}/advertisements/${payload}`).then(response => {
+      console.log(payload, response.data)
+      commit(COMPANY_BY_ID_SUCCESS, response.data)
+    })
+  },
+  addProduct ({commit}, payload) {
+    commit(ADD_COMPANY)
+    axios.post(`${API_BASE}/advertisements`, payload).then(response => {
+      commit(ADD_COMPANY_SUCCESS, response.data)
+    })
+  },
+  updateProduct ({commit}, payload) {
+    commit(UPDATE_COMPANY)
+    axios.put(`${API_BASE}/advertisements/${payload._id}`, payload).then(response => {
+      commit(UPDATE_COMPANY_SUCCESS, response.data)
+    })
+  },
+  removeProduct ({commit}, payload) {
+    commit(REMOVE_COMPANY)
+    axios.delete(`${API_BASE}/advertisements/${payload}`, payload).then(response => {
+      console.debug('response', response.data)
+      commit(REMOVE_COMPANY_SUCCESS, response.data)
+    })
+  }
+}
