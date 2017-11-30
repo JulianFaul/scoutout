@@ -9,6 +9,8 @@ import {
     REMOVE_COMPANY_SUCCESS,
     ALL_COMPANYS,
     ALL_COMPANYS_SUCCESS,
+    ALL_PRODUCTS,
+    ALL_PRODUCTS_SUCCESS,
     ERROR_MSG
   } from './mutation-types'
   
@@ -60,4 +62,14 @@ import {
       state.products.splice(index, 1)
     },
     [ERROR_MSG] (state, payload) {}
+  }
+
+  export const productMutations = {
+    [ALL_PRODUCTS] (state) {
+      state.showLoader = true
+    },
+    [ALL_PRODUCTS_SUCCESS] (state, payload) {
+      state.showLoader = false
+      state.products = payload
+    }
   }

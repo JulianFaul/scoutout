@@ -22,6 +22,7 @@
 <script>
   export default {
     name: 'company-item',
+    // the prop comes from CompanyList
     props: ['company']
   }
 </script>

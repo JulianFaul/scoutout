@@ -11,7 +11,9 @@ import {
   REMOVE_COMPANY,
   REMOVE_COMPANY_SUCCESS,
   ALL_COMPANYS,
-  ALL_COMPANYS_SUCCESS
+  ALL_COMPANYS_SUCCESS,
+  ALL_PRODUCTS,
+  ALL_PRODUCTS_SUCCESS
 } from './mutation-types'
 
 
@@ -47,6 +49,15 @@ export const companyActions = {
     axios.delete(`${API_BASE}/advertisements/${payload}`, payload).then(response => {
       console.debug('response', response.data)
       commit(REMOVE_COMPANY_SUCCESS, response.data)
+    })
+  }
+}
+
+export const productActions = {
+  allProducts ({commit}) {
+    commit(ALL_PRODUCTS)
+    axios.get(`${API_BASE}/products`).then(response => {
+      commit(ALL_PRODUCTS_SUCCESS, response.data)
     })
   }
 }

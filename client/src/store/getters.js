@@ -10,5 +10,12 @@ export const companyGetters = {
       } else {
         return state.company
       }
+    },
+    allProducts: state => {
+      return state.products
     }
+  }
+
+  export const productGetters = {
+    allProducts: state => state.products
   }
