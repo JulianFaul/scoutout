@@ -1,6 +1,6 @@
 <template>
     <v-ons-col style="width: 350px; float:left;">
-            <router-link :to="'/details/'+company.id" class="company-link">
+            <router-link :to="'/details/'+ company.id" class="company-link">
                 <v-ons-card>
                     <img :src="company.imageURL" style="width:100% ;margin: 0 auto;display: block;">
                     <div class="title">
@@ -20,11 +20,8 @@
 </template>
 
 <script>
-export default {
-    name: 'company',
+  export default {
+    name: 'company-item',
     props: ['company']
-}
+  }
 </script>
-
-        <!-- <product-button :product="product"></product-button> -->
-        <!--<button class="button"><i class="fa fa-cart-plus"></i> Add to Cart</button>-->

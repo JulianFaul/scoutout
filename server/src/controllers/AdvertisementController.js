@@ -41,7 +41,7 @@ module.exports = {
   },
   async show(req,res){
       try{
-        const advertisement = await Advertisement.findById(req.params.advertisementId)
+        const advertisement = await Advertisement.findById(req.params.companyId)
         res.send(advertisement)
       }catch(err){
         res.status(500).send({

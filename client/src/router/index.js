@@ -8,8 +8,8 @@ import ViewAdvertisement from '@/components/ViewAdvertisement'
 
 
 
-import CompanyList from '@/components/company/CompanyList'
-import CompanyDetails from '@/components/company/CompanyDetails'
+import Home from '@/pages/Home'
+import Details from '@/pages/Details'
 
 
 import HomePage from '@/components/HelloWorld'
@@ -29,14 +29,14 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/companylist',
-      name: 'companylist',
-      component: CompanyList
+      path: '/home',
+      name: 'home',
+      component: Home
     },
     {
       path: '/details/:id',
       name: 'details',
-      component: CompanyDetails
+      component: Details
     },
 
 

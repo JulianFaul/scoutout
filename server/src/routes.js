@@ -21,7 +21,7 @@ module.exports = app => {
     app.post('/advertisements',
     AdvertisementController.post)
 
-    app.get('/advertisements/:advertisementId',
+    app.get('/companies/:companyId',
     AdvertisementController.show)
 
     app.delete('/advertisements/:advertisementId',

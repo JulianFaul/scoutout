@@ -15,7 +15,6 @@ import {
   export const companyMutations = {
     [ALL_COMPANYS] (state) {
       state.showLoader = true
-      // this[]
     },
     [ALL_COMPANYS_SUCCESS] (state, payload) {
       state.showLoader = false
@@ -26,8 +25,11 @@ import {
     },
     [COMPANY_BY_ID_SUCCESS] (state, payload) {
       state.showLoader = false
-      state.product = payload
+      state.company = payload
     },
+
+
+    
     [ADD_COMPANY]: (state, payload) => {
       state.showLoader = true
     },

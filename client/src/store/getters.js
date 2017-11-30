@@ -4,14 +4,11 @@ export const companyGetters = {
       return state.companies
     },
 
-    productById: (state, getters) => id => {
-      if (getters.allProducts.length > 0) {
-        return getters.allProducts.filter(p => p._id === id)[0]
+    companyById: (state, getters) => id => {
+      if (getters.allCompanies.length > 0) {
+        return getters.allCompanies.filter(c => c.id.toString() === id)[0]  
       } else {
-        return state.product
+        return state.company
       }
-    },
-    allManufacturers: state => {
-      return state.manufacturers
     }
   }

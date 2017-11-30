@@ -18,13 +18,14 @@ import {
 export const companyActions = {
   allCompanies ({commit}) {
     commit(ALL_COMPANYS)
+    
     axios.get(`${API_BASE}/companies`).then(response => {
       commit(ALL_COMPANYS_SUCCESS, response.data)
     })
   },
-  productById ({commit}, payload) {
+  companyById ({commit}, payload) {
     commit(COMPANY_BY_ID)
-    axios.get(`${API_BASE}/advertisements/${payload}`).then(response => {
+    axios.get(`${API_BASE}/companies/${payload}`).then(response => {
       console.log(payload, response.data)
       commit(COMPANY_BY_ID_SUCCESS, response.data)
     })
