@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import { companyGetters,   productGetters} from './getters'
-import { companyMutations, productMutations} from './mutations'
-import { companyActions,   productActions } from './actions'
+import { companyGetters} from './getters'
+import { companyMutations} from './mutations'
+import { companyActions } from './actions'
 
 Vue.use(Vuex)
 
@@ -15,11 +15,10 @@ export default new Vuex.Store({
         user: null,
         isUserLoggedIn: false,
         company:{},
-        companies: [],
-        products : []
+        companies: []
     },
     
-    mutations:Object.assign({}, companyMutations,productMutations),
+    mutations:Object.assign({}, companyMutations),
     // setToken(state, token) {
     //     state.token = token
     //     if (token) {
@@ -31,7 +30,7 @@ export default new Vuex.Store({
     // setUser(state, user) {
     //     state.user = user
     // },
-    actions:Object.assign({}, companyActions,productActions),
+    actions:Object.assign({}, companyActions),
         // setToken({ commit }, token) {
         //     commit('setToken', token)
         // },
@@ -40,7 +39,7 @@ export default new Vuex.Store({
         //     commit('setUser', user)
         // },
 
-    getters: Object.assign({}, companyGetters,productGetters)
+    getters: Object.assign({}, companyGetters)
 
     
 })

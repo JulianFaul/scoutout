@@ -1,4 +1,4 @@
-const {Advertisement} = require('../models')
+const {Advertisement,Product} = require('../models')
 
 module.exports = {
   async getAllAdvertisements(req,res){
@@ -18,7 +18,13 @@ module.exports = {
           }
         })
       }else{
-        advertisements = await Advertisement.findAll()
+        advertisements = await Advertisement.findAll({
+          include:[
+            {
+              model: Product
+            }
+          ]
+        })
       }
       
       res.send(advertisements)
@@ -41,7 +47,13 @@ module.exports = {
   },
   async show(req,res){
       try{
-        const advertisement = await Advertisement.findById(req.params.companyId)
+        const advertisement = await Advertisement.findById(req.params.companyId,({
+          include:[
+            {
+              model: Product
+            }
+          ]
+        }))
         res.send(advertisement)
       }catch(err){
         res.status(500).send({

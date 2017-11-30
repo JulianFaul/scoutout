@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Advertisement.associate = function(models){
         Advertisement.hasMany(models.Product,{
-            foreignKey: "productId"
+            foreignKey: "advertisement_id"
         })
     }
 

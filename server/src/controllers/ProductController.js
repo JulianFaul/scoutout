@@ -14,13 +14,6 @@ module.exports = {
                 }
             }
         )
-            .map(product => product.toJSON())
-            .map(product => _.extend(
-                {},
-                product.Advertisement,
-                product
-                ))
-
             res.send(products)
         } catch (err) {
             res.status(500).send({
