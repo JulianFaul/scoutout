@@ -10,9 +10,6 @@
                         {{company.description}}
                     </div>
                     <div class="content">
-                      <!-- <template v-for="company in companies">
-                        {{company}}
-                    </template> -->
                     </div>
                 </v-ons-card>
             </router-link>

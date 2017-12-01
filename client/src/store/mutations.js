@@ -11,6 +11,8 @@ import {
     ALL_COMPANYS_SUCCESS,
     ALL_PRODUCTS,
     ALL_PRODUCTS_SUCCESS,
+    ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS,
+    ALL_PRODUCTS_BY_COMPANY_ID,
     ERROR_MSG
   } from './mutation-types'
   
@@ -65,11 +67,20 @@ import {
   }
 
   export const productMutations = {
-    [ALL_PRODUCTS] (state) {
+    // [ALL_PRODUCTS] (state) {
+    //   state.showLoader = true
+    // },
+    // [ALL_PRODUCTS_SUCCESS] (state, payload) {
+    //   state.showLoader = false
+    //   state.products = payload
+    // },
+    [ALL_PRODUCTS_BY_COMPANY_ID] (state) {
       state.showLoader = true
     },
-    [ALL_PRODUCTS_SUCCESS] (state, payload) {
+    [ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS] (state, payload) {
       state.showLoader = false
+      console.log("Mutate " + payload)
       state.products = payload
+      
     }
   }

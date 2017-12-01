@@ -13,14 +13,15 @@ import {
   ALL_COMPANYS,
   ALL_COMPANYS_SUCCESS,
   ALL_PRODUCTS,
-  ALL_PRODUCTS_SUCCESS
+  ALL_PRODUCTS_SUCCESS,
+  ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS,
+  ALL_PRODUCTS_BY_COMPANY_ID
 } from './mutation-types'
 
 
 export const companyActions = {
   allCompanies ({commit}) {
     commit(ALL_COMPANYS)
-    
     axios.get(`${API_BASE}/companies`).then(response => {
       commit(ALL_COMPANYS_SUCCESS, response.data)
     })
@@ -28,7 +29,7 @@ export const companyActions = {
   companyById ({commit}, payload) {
     commit(COMPANY_BY_ID)
     axios.get(`${API_BASE}/companies/${payload}`).then(response => {
-      console.log(payload, response.data)
+      
       commit(COMPANY_BY_ID_SUCCESS, response.data)
     })
   },
@@ -54,10 +55,18 @@ export const companyActions = {
 }
 
 export const productActions = {
-  allProducts ({commit}) {
-    commit(ALL_PRODUCTS)
-    axios.get(`${API_BASE}/products`).then(response => {
-      commit(ALL_PRODUCTS_SUCCESS, response.data)
+  // allProducts ({commit}) {
+  //   commit(ALL_PRODUCTS)
+  //   axios.get(`${API_BASE}/products`).then(response => {
+  //     commit(ALL_PRODUCTS_SUCCESS, response.data)
+  //   })
+  // },
+  productsByCompanyId ({commit}, payload) {
+    commit(ALL_PRODUCTS_BY_COMPANY_ID)
+    axios.get(`${API_BASE}/product/?advertisement_id=${payload}`)
+    .then(response => {
+      console.log(response.data)
+      commit(ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS, response.data)
     })
   }
 }

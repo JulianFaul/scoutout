@@ -43,6 +43,9 @@ module.exports = app => {
     ProductController.post)
 
     app.get('/product',
+    ProductController.getAllProductsByCompanyID)
+
+    app.get('/products',
     ProductController.getAllProducts)
 }
 

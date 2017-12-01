@@ -10,7 +10,7 @@ import ViewAdvertisement from '@/components/ViewAdvertisement'
 
 import Home from '@/pages/Home'
 import Details from '@/pages/Details'
-
+import ProductList from '@/components/company/ProductList'
 
 import HomePage from '@/components/HelloWorld'
 
@@ -37,6 +37,11 @@ export default new Router({
       path: '/details/:id',
       name: 'details',
       component: Details
+    },
+    {
+      path: '/products',
+      name: 'products',
+      component: ProductList
     },
 
 

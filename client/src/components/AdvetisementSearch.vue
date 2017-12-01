@@ -11,7 +11,7 @@ export default {
         return {
           
         }
-    }
+    },
     methods: {
         navigateTo(route) {
             this.$router.push(route)

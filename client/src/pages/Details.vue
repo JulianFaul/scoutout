@@ -20,7 +20,7 @@
       }
     },
     components: {
-      'company-details': CompanyDetails
+      'company-details': CompanyDetails,
     }
     
   }

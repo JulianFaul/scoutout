@@ -1,6 +1,7 @@
 export const companyGetters = {
 
     allCompanies: (state, getters) => {
+      console.log("compa " + state.companies.length)
       return state.companies
     },
 
@@ -10,12 +11,15 @@ export const companyGetters = {
       } else {
         return state.company
       }
-    },
-    allProducts: state => {
-      return state.products
     }
   }
 
   export const productGetters = {
-    allProducts: state => state.products
+    allProducts: (state, getters) => {
+        return state.products
+    },
+    productsByCompanyId: (state, getters) => {
+      console.log("product " + state.products.length)
+        return state.products
+    }
   }
