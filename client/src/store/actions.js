@@ -65,7 +65,6 @@ export const productActions = {
     commit(ALL_PRODUCTS_BY_COMPANY_ID)
     axios.get(`${API_BASE}/product/?advertisement_id=${payload}`)
     .then(response => {
-      console.log(response.data)
       commit(ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS, response.data)
     })
   }

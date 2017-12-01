@@ -79,7 +79,6 @@ import {
     },
     [ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS] (state, payload) {
       state.showLoader = false
-      console.log("Mutate " + payload)
       state.products = payload
       
     }

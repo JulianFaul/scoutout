@@ -19,7 +19,6 @@ export const companyGetters = {
         return state.products
     },
     productsByCompanyId: (state, getters) => {
-      console.log("product " + state.products.length)
         return state.products
     }
   }

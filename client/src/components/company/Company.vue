@@ -1,6 +1,6 @@
 <template>
-    <v-ons-col style="width: 350px; float:left;">
-            <router-link :to="'/details/'+ company.id" class="company-link">
+    <v-ons-col @click="getProducts" style="width: 350px; float:left;">
+            <router-link  :to="'/details/'+ company.id" class="company-link">
                 <v-ons-card>
                     <img :src="company.imageURL" style="width:100% ;margin: 0 auto;display: block;">
                     <div class="title">
@@ -20,6 +20,11 @@
   export default {
     name: 'company-item',
     // the prop comes from CompanyList
-    props: ['company']
+    props: ['company'],
+    methods:{
+        getProducts(){
+         this.$store.dispatch('productsByCompanyId',this.$route.params['id'])
+        }
+    }
   }
 </script>

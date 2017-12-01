@@ -18,13 +18,7 @@ module.exports = {
           }
         })
       }else{
-        advertisements = await Advertisement.findAll({
-          include:[
-            {
-              model: Product
-            }
-          ]
-        })
+        advertisements = await Advertisement.findAll()
       }
       
       res.send(advertisements)
@@ -47,13 +41,7 @@ module.exports = {
   },
   async show(req,res){
       try{
-        const advertisement = await Advertisement.findById(req.params.companyId,({
-          include:[
-            {
-              model: Product
-            }
-          ]
-        }))
+        const advertisement = await Advertisement.findById(req.params.companyId)
         res.send(advertisement)
       }catch(err){
         res.status(500).send({

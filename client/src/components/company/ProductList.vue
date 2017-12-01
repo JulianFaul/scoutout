@@ -2,11 +2,9 @@
   <div>
     <div class="products">
       <div class="container">
-          hi
-          {{products}}
-        <!-- <template v-for="product in products" >
-            Hi
-        </template> -->
+        <template v-for="product in products" >
+            <product :product="product" :key="product.id"></product>
+        </template>
       </div>
     </div>
   </div>
@@ -26,7 +24,9 @@
       products () {
           return this.$store.getters.productsByCompanyId
       }
-      
+    },
+    components: {
+      'product': Product
     }
   }
 </script>
