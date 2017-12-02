@@ -1,7 +1,6 @@
 export const companyGetters = {
 
     allCompanies: (state, getters) => {
-      console.log("compa " + state.companies.length)
       return state.companies
     },
 
@@ -20,5 +19,14 @@ export const companyGetters = {
     },
     productsByCompanyId: (state, getters) => {
         return state.products
+    },
+    
+    productById: (state, getters) => productId => {
+      console.log("The product id is = " + productId)
+      if (getters.allProducts.length > 0) {
+        return getters.allProducts.filter(product => product.id.toString() === productId)[0]  
+      } else {
+        return state.product
+      }
     }
   }

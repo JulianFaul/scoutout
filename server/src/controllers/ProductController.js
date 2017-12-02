@@ -4,6 +4,17 @@ const _ = require('lodash')
 
 module.exports = {
 
+    async getProductById(req, res){
+        try {
+            
+            let product = await Product.findById(req.params.productId)
+            res.send(product)
+        } catch (err) {
+            res.status(500).send({
+                // error: "An error has occured trying to get all Products"
+            })
+        }
+    },
     async getAllProducts(req, res) {
         try {
             let products = await Product.findAll()
@@ -17,7 +28,6 @@ module.exports = {
     async getAllProductsByCompanyID(req, res) {
         try {
             const {advertisement_id} = req.query
-            console.log(advertisement_id)
             const products = await Product.findAll(
                 {
                 where: {

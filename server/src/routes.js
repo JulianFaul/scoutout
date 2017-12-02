@@ -47,5 +47,8 @@ module.exports = app => {
 
     app.get('/products',
     ProductController.getAllProducts)
+
+    app.get('/product/:productId',
+    ProductController.getProductById)
 }
 

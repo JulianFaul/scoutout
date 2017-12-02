@@ -1,21 +1,22 @@
 <template>
   <div>
+      <h1>This is view product by company id</h1>
       <ul class="list">
-        <li v-for="company in companies" :key="company.id" class="list__item">
+        <li v-for="product in products" :key="product.id" class="list__item">
             <div class="list__item__left">
                 <img class="list__item__thumbnail" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAIAAAADnC86AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wwJCB8v/9zErgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAvSURBVFjD7c0BDQAACAMgtX+KJzWGm4MCdJK6MHVELBaLxWKxWCwWi8VisVj8MV7qBgI2A8rYpgAAAABJRU5ErkJggg==">
             </div>
             
-            <div @click="getProducts" class="list__item__center">
-                 <router-link :to="'/products/'+ company.id" class="company-link">
-                    <div class="list__item__title">{{company.companyName}}</div>
+            <div class="list__item__center">
+                 <router-link :to="'/products/'+ product.id" class="company-link">
+                    <div class="list__item__title">{{product.productName}}</div>
                 </router-link>
             </div>
 
             <div class="list__item__right">
                 <i class="ion-edit list__item__icon"></i>
             </div>
-            <div @click="destory" class="list__item__right">
+            <div class="list__item__right">
                 <i class="ion-trash-b list__item__icon"></i>
             </div>
         </li>
@@ -27,46 +28,18 @@
 
 <script>
   export default {
-    data () {
-      return {
+    name: 'Product',
+    created () {
+      if (this.products.length === 0) {
+          this.$store.dispatch('productsByCompanyId',this.$route.params['id'])
       }
+    
     },
     computed: {
-      companies () {
-        return this.$store.getters.allCompanies
+      products () {
+          return this.$store.getters.productsByCompanyId
       }
-    },
-    created () {
-      if (this.companies.length === 0) {
-        this.$store.dispatch('allCompanies')
-      }
-    },
-    methods:{
-        getProducts(){
-         this.$store.dispatch('productsByCompanyId',this.$route.params['id'])
-        },
-        destory(){
-            swal({
-  title: "Delete this comment?",
-  text: "Are you sure? You won't be able to revert this!",
-  type: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  confirmButtonText: "Yes, Delete it!",
-  closeOnConfirm: true
-}, () => {
-  axios.delete('/comment/' + this.comment.id + '/delete');
-  $(this.$el).fadeOut(300, () => toastr.success('Comment deleted.'));
-})
-        }
     }
-    // ,
-    // methods: {
-    //   deleteProduct (id) {
-    //     console.log(id)
-    //     this.$store.dispatch('removeProduct', id)
-    //   }
-    // }
   }
 </script>
 

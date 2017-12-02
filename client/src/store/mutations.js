@@ -13,6 +13,8 @@ import {
     ALL_PRODUCTS_SUCCESS,
     ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS,
     ALL_PRODUCTS_BY_COMPANY_ID,
+    PRODUCT_BY_ID,
+    PRODUCT_BY_ID_SUCCESS,
     ERROR_MSG
   } from './mutation-types'
   
@@ -80,6 +82,12 @@ import {
     [ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS] (state, payload) {
       state.showLoader = false
       state.products = payload
-      
+    },
+    [PRODUCT_BY_ID] (state) {
+      state.showLoader = true
+    },
+    [PRODUCT_BY_ID_SUCCESS] (state, payload) {
+      state.showLoader = false
+      state.product = payload
     }
   }

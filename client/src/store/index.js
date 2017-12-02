@@ -16,7 +16,8 @@ export default new Vuex.Store({
         isUserLoggedIn: false,
         company:{},
         companies: [],
-        products: []
+        products: [],
+        product: {}
     },
     
     mutations:Object.assign({}, companyMutations,productMutations),

@@ -15,12 +15,14 @@ import {
   ALL_PRODUCTS,
   ALL_PRODUCTS_SUCCESS,
   ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS,
-  ALL_PRODUCTS_BY_COMPANY_ID
+  ALL_PRODUCTS_BY_COMPANY_ID,
+  PRODUCT_BY_ID,
+  PRODUCT_BY_ID_SUCCESS 
 } from './mutation-types'
 
 
 export const companyActions = {
-  allCompanies ({commit}) {
+  allCompanies ({commit},) {
     commit(ALL_COMPANYS)
     axios.get(`${API_BASE}/companies`).then(response => {
       commit(ALL_COMPANYS_SUCCESS, response.data)
@@ -67,5 +69,12 @@ export const productActions = {
     .then(response => {
       commit(ALL_PRODUCTS_BY_COMPANY_ID_SUCCESS, response.data)
     })
-  }
+  },
+  productById ({commit}, payload) {
+    commit(PRODUCT_BY_ID)
+    axios.get(`${API_BASE}/product/${payload}`).then(response => {
+      console.log("this is the payload " + payload)
+      commit(PRODUCT_BY_ID_SUCCESS, response.data)
+    })
+  },
 }

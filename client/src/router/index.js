@@ -10,19 +10,18 @@ import ViewAdvertisement from '@/components/ViewAdvertisement'
 
 import Home from '@/pages/Home'
 import Details from '@/pages/Details'
-import ProductList from '@/components/company/ProductList'
+import ProductInfo from '@/pages/ProductInfo'
+
+// Admin
+import Index from '@/pages/Admin/Index'
+import Companies from '@/pages/Admin/Companies'
+import New from '@/pages/Admin/New'
+import Edit from '@/pages/Admin/Edit'
+import Products from '@/pages/Admin/Products'
 
 import HomePage from '@/components/HelloWorld'
 
 import UserProfile from '@/components/UserProfile'
-
-import Dashboard from '@/components/admin/Dashboard'
-import EditAdvertisement from '@/components/admin/EditAdvertisement'
-import NewAdvertisement from '@/components/admin/NewAdvertisement'
-import ViewAll from '@/components/admin/ViewAll'
-import AllUsers from '@/components/admin/AllUsers'
-import ViewProducts from '@/components/admin/ViewProducts'
-import AddProduct from '@/components/admin/AddProduct'
 
 Vue.use(Router)
 
@@ -30,7 +29,7 @@ export default new Router({
   routes: [
     {
       path: '/home',
-      name: 'home',
+      name: 'root',
       component: Home
     },
     {
@@ -39,11 +38,10 @@ export default new Router({
       component: Details
     },
     {
-      path: '/products',
-      name: 'products',
-      component: ProductList
+      path: '/product/:productId',
+      name: 'product',
+      component: ProductInfo
     },
-
 
 
 
@@ -54,7 +52,7 @@ export default new Router({
 
     {
       path: '/advertisements',
-      name: 'root',
+      name: 'sdsadsad',
       component: AdvertisementPage
     },
     {
@@ -82,48 +80,32 @@ export default new Router({
       path: '/userprofile',
       name: 'userprofile',
       component: UserProfile
-      
+
     },
     {
       path: '/admin',
-      name: 'admin',
-
-      // Parent routes still has a component
-      component: Dashboard,
-
-      // Child routes
+      component: Index,
       children: [
         {
           path: 'new',
-          name: 'new',
-          component: NewAdvertisement
+          name: 'New',
+          component: New
         },
         {
-          path: 'view',
-          name: 'viewAll',
-          component: ViewAll
+          path: '',
+          name: 'Companies',
+          component: Companies
         },
         {
-          path: 'edit/:advertisementId',
-          name: 'edit',
-          component: EditAdvertisement
+          path: '/products/:id',
+          name: 'products',
+          component: Products
         },
         {
-         path: 'allUsers',
-         name: 'allusers',
-         component: AllUsers
-        },
-        {
-          path:'products/:advertisementId',
-          name: 'viewProducts',
-          component: ViewProducts
-        },
-        {
-          path:'newproduct/:advertisementId',
-          name: 'newProducts',
-          component: AddProduct
+          path: 'edit/:id',
+          name: 'Edit',
+          component: Edit
         }
-        
       ]
     }
   ]

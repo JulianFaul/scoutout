@@ -2,9 +2,11 @@
   <div>
     <div class="products">
       <div class="container">
+        <ul class="list list--inset">
         <template v-for="product in products" >
             <product :product="product" :key="product.id"></product>
         </template>
+        </ul>
       </div>
     </div>
   </div>

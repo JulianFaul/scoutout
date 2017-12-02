@@ -15,7 +15,7 @@
     },
     components: {
       'company-list': CompanyList
-    }
+      }
 
   }
 </script>
